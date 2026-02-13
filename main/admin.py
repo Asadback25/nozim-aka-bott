@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import BotUsers , RegisterTravel , TravelParticipants
 
-# Register your models here.
+admin.site.register(BotUsers)
+admin.site.register(RegisterTravel)
+admin.site.register(TravelParticipants)
