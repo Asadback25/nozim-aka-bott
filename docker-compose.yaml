@@ -1,0 +1,25 @@
+
+version: '3.8'
+
+services:
+  # Django Veb-sayti
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+
+  # Telegram Bot
+  bot:
+    build: .
+    command: python manage.py run_bot
+    volumes:
+      - .:/app
+    depends_on:
+      - web
